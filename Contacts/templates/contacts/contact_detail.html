@@ -2,6 +2,21 @@
 
 {% block content %}
 
+<style>
+.centered-text {
+    text-align: center;
+}
+.btn-home {
+    background-color: #007bff; 
+}
+.btn-edit {
+    background-color: #28a745; 
+}
+.btn-delete {
+    background-color: #dc3545; 
+}
+</style>
+
 <div class="centered-text" style="color: blue;">
     <h1>Contact Details</h1>
 </div>
@@ -10,13 +25,13 @@
 <p>Notes: {{ contact.notes }}</p>
 <p>Created Time: {{ contact.created_time }}</p>
 <br>
-<a class="btn btn-info" href="{% url 'contact_list' %}" role="button">Home</a>
-<a class="btn btn-info" href="{% url 'contact_update' contact.pk %}" role="button">Edit</a>
-<a class="btn btn-info" href="{% url 'contact_delete' contact.pk %}" role="button">Delete</a>
+<a class="btn btn-home" href="{% url 'contact_list' %}" role="button">Home</a>
+<a class="btn btn-edit" href="{% url 'contact_update' contact.pk %}" role="button">Edit</a>
+<a class="btn btn-delete" href="{% url 'contact_delete' contact.pk %}" role="button">Delete</a>
 
 <hr>
 <div class="centered-text" style="color: green;">
     <h4>&copy; Created by Kamal Koushik</h4>
 </div>
 
-{% endblock content %}
+{% endblock content %}

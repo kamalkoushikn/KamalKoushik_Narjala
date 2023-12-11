@@ -27,14 +27,21 @@ class ContactCreateView(View):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()  
-            return redirect('contact_list')  # Redirect to the contact list page or any other page
+            return redirect('contact_list')  
+        
+        else:
+            
+            context = {
+                'form': form,
+                'is_creation': True
+            }
    
-        return render(request, self.template_name, {'form': form})
+        return render(request, self.template_name, context)
     
 class ContactUpdateView(UpdateView):
     model = Contact
     form_class = ContactForm
-    template_name = 'contacts/contact_form.html'  # Use the same form template for update
+    template_name = 'contacts/contact_form.html'  
     success_url = reverse_lazy("contact_list")
 
 class ContactDetailView(DetailView):
